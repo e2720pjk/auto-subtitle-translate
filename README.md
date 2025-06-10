@@ -1,4 +1,4 @@
-# Automatic subtitles & translates in your videos
+# Automatically subtitle and translate your video
 
 This repository uses `ffmpeg` and [OpenAI's Whisper](https://openai.com/blog/whisper) to automatically generate and overlay subtitles on any video. Then, it uses [pretrained Llama2](https://huggingface.co/SnypzZz/Llama2-13b-Language-translate) to translate the subtitles to 50 languages.
 
@@ -35,7 +35,7 @@ The following command will generate a `subtitled/video.mp4` file contained the i
 
     auto_subtitle_llama /path/to/video.mp4 -o subtitled/
 
-The default setting (which selects the `large` model) works well for transcribing English. You can optionally use a bigger model for better results (especially with other languages). The available models are `tiny`, `tiny.en`, `base`, `base.en`, `small`, `small.en`, `medium`, `medium.en`, `large`.
+The default setting (which selects the `turbo` model) works well for transcribing English. You can optionally use a bigger model for better results (especially with other languages). The available models are `tiny`, `tiny.en`, `base`, `base.en`, `small`, `small.en`, `medium`, `medium.en`, `large`, `turbo`.
 
     auto_subtitle_llama /path/to/video.mp4 --model medium
 
