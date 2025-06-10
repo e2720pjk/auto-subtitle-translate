@@ -1,61 +1,132 @@
-# Automatically subtitle and translate your video
+# 🎬 Auto Subtitle & Translate with Whisper + LLaMA
 
-This repository uses `ffmpeg` and [OpenAI's Whisper](https://openai.com/blog/whisper) to automatically generate and overlay subtitles on any video. Then, it uses [pretrained Llama2](https://huggingface.co/SnypzZz/Llama2-13b-Language-translate) to translate the subtitles to 50 languages.
+Automatically generate subtitles for any video using [OpenAI Whisper](https://openai.com/blog/whisper), overlay them with `ffmpeg`, and optionally translate them to 50+ languages using a [LLaMA2-based multilingual translator](https://huggingface.co/SnypzZz/Llama2-13b-Language-translate).
 
-##### [Demo Video](https://youtu.be/vkvTpmQ7M48?si=qQLvYzwtsQ4djo4K)
-<p align=“center” width=“100%”>
-    <img src="https://github.com/YJ-20/auto-subtitle-llama/assets/68987494/85a41810-75ac-44f8-9b75-35c599032619" width="49%">
-    <img src="https://github.com/YJ-20/auto-subtitle-llama/assets/68987494/88d42ad7-da9f-4749-9923-4ec9fc9ed040" width="49%">
-    <img src="https://github.com/YJ-20/auto-subtitle-llama/assets/68987494/1c255fae-a1c5-4cb1-a60c-87a6aabfcf04" width="49%">
-    <img src="https://github.com/YJ-20/auto-subtitle-llama/assets/68987494/91ad2860-18a7-460c-91e6-011265308433" width="49%">
+### 📺 [Demo Video](https://youtu.be/vkvTpmQ7M48?si=qQLvYzwtsQ4djo4K)
+
+<p align="center">
+  <img src="https://github.com/YJ-20/auto-subtitle-llama/assets/68987494/85a41810-75ac-44f8-9b75-35c599032619" width="49%">
+  <img src="https://github.com/YJ-20/auto-subtitle-llama/assets/68987494/88d42ad7-da9f-4749-9923-4ec9fc9ed040" width="49%">
+  <img src="https://github.com/YJ-20/auto-subtitle-llama/assets/68987494/1c255fae-a1c5-4cb1-a60c-87a6aabfcf04" width="49%">
+  <img src="https://github.com/YJ-20/auto-subtitle-llama/assets/68987494/91ad2860-18a7-460c-91e6-011265308433" width="49%">
 </p>
 
-## Installation
+---
 
-To get started, you'll need Python 3.7 or newer. Install the binary by running the following command:
+## 🛠️ Installation
 
-    pip install git+https://github.com/YJ-20/auto-subtitle-llama
+Make sure you have Python 3.7 or later.
 
-You'll also need to install [`ffmpeg`](https://ffmpeg.org/), which is available from most package managers:
+Install the package directly from GitHub:
 
 ```bash
-# on Ubuntu or Debian
+pip install git+https://github.com/YJ-20/auto-subtitle-llama
+```
+
+### Install `ffmpeg`
+
+```bash
+# Ubuntu / Debian
 sudo apt update && sudo apt install ffmpeg
 
-# on MacOS using Homebrew (https://brew.sh/)
+# macOS (with Homebrew)
 brew install ffmpeg
 
-# on Windows using Chocolatey (https://chocolatey.org/)
+# Windows (with Chocolatey)
 choco install ffmpeg
 ```
 
-## Usage
+---
 
-The following command will generate a `subtitled/video.mp4` file contained the input video with overlayed subtitles.
+## 🚀 Usage
 
-    auto_subtitle_llama /path/to/video.mp4 -o subtitled/
+### Basic Command
 
-The default setting (which selects the `turbo` model) works well for transcribing English. You can optionally use a bigger model for better results (especially with other languages). The available models are `tiny`, `tiny.en`, `base`, `base.en`, `small`, `small.en`, `medium`, `medium.en`, `large`, `turbo`.
+```bash
+auto_subtitle_llama /path/to/video.mp4 -o subtitled/
+```
 
-    auto_subtitle_llama /path/to/video.mp4 --model medium
+This generates a subtitled video and saves it in the `subtitled/` directory.
 
-Adding `--translate_to language_code` will translate the subtitles into one of the 50 languages:
+### Choose a Whisper Model
 
-    auto_subtitle_llama /path/to/video.mp4 --translate_to language_code
+The default model is `turbo`. Use other models:
+
+```bash
+auto_subtitle_llama /path/to/video.mp4 --model medium
+```
+
+Available models:
+```
+tiny, base, small, medium, large, turbo
+```
+
+### Translate Subtitles
+
+To translate subtitles to another language:
+
+```bash
+auto_subtitle_llama /path/to/video.mp4 --translate_to ko_KR
+```
+
+---
+
+## 🌐 Supported Translation Languages
+
+| Language     | Code   | Language     | Code   | Language     | Code   |
+|--------------|--------|--------------|--------|--------------|--------|
+| Arabic       | ar_AR  | Czech        | cs_CZ  | German       | de_DE  |
+| English      | en_XX  | Spanish      | es_XX  | Estonian     | et_EE  |
+| Finnish      | fi_FI  | French       | fr_XX  | Gujarati     | gu_IN  |
+| Hindi        | hi_IN  | Italian      | it_IT  | Japanese     | ja_XX  |
+| Kazakh       | kk_KZ  | Korean       | ko_KR  | Lithuanian   | lt_LT  |
+| Latvian      | lv_LV  | Burmese      | my_MM  | Nepali       | ne_NP  |
+| Dutch        | nl_XX  | Romanian     | ro_RO  | Russian      | ru_RU  |
+| Sinhala      | si_LK  | Turkish      | tr_TR  | Vietnamese   | vi_VN  |
+| Chinese      | zh_CN  | Afrikaans    | af_ZA  | Azerbaijani  | az_AZ  |
+| Bengali      | bn_IN  | Persian      | fa_IR  | Hebrew       | he_IL  |
+| Croatian     | hr_HR  | Indonesian   | id_ID  | Georgian     | ka_GE  |
+| Khmer        | km_KH  | Macedonian   | mk_MK  | Malayalam    | ml_IN  |
+| Mongolian    | mn_MN  | Marathi      | mr_IN  | Polish       | pl_PL  |
+| Pashto       | ps_AF  | Portuguese   | pt_XX  | Swedish      | sv_SE  |
+| Swahili      | sw_KE  | Tamil        | ta_IN  | Telugu       | te_IN  |
+| Thai         | th_TH  | Tagalog      | tl_XX  | Ukrainian    | uk_UA  |
+| Urdu         | ur_PK  | Xhosa        | xh_ZA  | Galician     | gl_ES  |
+| Slovene      | sl_SI  |              |        |              |        |
 
 
-Language Code
-Language |Arabic|Czech|German|English|Spanish|Estonian|Finnish|French|Gujarati|Hindi|Italian|Japanese|Kazakh|Korean|Lithuanian|Latvian|Burmese|Nepali|Dutch|Romanian|Russian|Sinhala|Turkish|Vietnamese|Chinese|Afrikaans|Azerbaijani|Bengali|Persian|Hebrew|Croatian|Indonesian|Georgian|Khmer|Macedonian|Malayalam|Mongolian|Marathi|Polish|Pashto|Portuguese|Swedish|Swahili|Tamil|Telugu|Thai|Tagalog|Ukrainian|Urdu|Xhosa|Galician|Slovene
-:--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---:
-Code |ar_AR|cs_CZ|de_DE|en_XX|es_XX|et_EE|fi_FI|fr_XX|gu_IN|hi_IN|it_IT|ja_XX|kk_KZ|ko_KR|lt_LT|lv_LV|my_MM|ne_NP|nl_XX|ro_RO|ru_RU|si_LK|tr_TR|vi_VN|zh_CN|af_ZA|az_AZ|bn_IN|fa_IR|he_IL|hr_HR|id_ID|ka_GE|km_KH|mk_MK|ml_IN|mn_MN|mr_IN|pl_PL|ps_AF|pt_XX|sv_SE|sw_KE|ta_IN|te_IN|th_TH|tl_XX|uk_UA|ur_PK|xh_ZA|gl_ES|sl_SI
+---
 
-Run the following to view all available options:
+## 📦 Output & Subtitle Options
 
-    auto_subtitle_llama --help
+| Option             | Description |
+|--------------------|-------------|
+| `--output_dir, -o` | Directory where the resulting subtitled videos and `.srt` files will be saved. Defaults to `subtitled/`. |
+| `--srt_only`       | If set to `true`, only the `.srt` subtitle file will be generated without creating a subtitled video. Useful for manual subtitle editing or external video processing pipelines. |
 
-## License
+#### Example:
 
-This script is open-source and licensed under the MIT License. For more details, check the [LICENSE](LICENSE) file.
+```bash
+# Save output to a custom directory
+auto_subtitle_llama /path/to/video.mp4 --output_dir results/
 
+# Generate only .srt file (no video overlay)
+auto_subtitle_llama /path/to/video.mp4 --srt_only true
+```
 
- 
+---
+
+## 📘 Command-line Help
+
+To view all available options:
+
+```bash
+auto_subtitle_llama --help
+```
+
+---
+
+## ⚖️ License
+
+This project is licensed under the MIT License.  
+See the [LICENSE](LICENSE) file for more details.
