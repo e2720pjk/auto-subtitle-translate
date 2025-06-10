@@ -40,28 +40,13 @@ choco install ffmpeg
 
 ## 🚀 Usage
 
-### Basic Command
+### Only Transcribe (w/o Translate)
 
 ```bash
-auto_subtitle_llama /path/to/video.mp4 -o subtitled/
+auto_subtitle_llama /path/to/video.mp4
 ```
 
-This generates a subtitled video and saves it in the `subtitled/` directory.
-
-### Choose a Whisper Model
-
-The default model is `turbo`. Use other models:
-
-```bash
-auto_subtitle_llama /path/to/video.mp4 --model medium
-```
-
-Available models:
-```
-tiny, base, small, medium, large, turbo
-```
-
-### Translate Subtitles
+### Transcribe and Translate Subtitles
 
 To translate subtitles to another language:
 
@@ -97,21 +82,30 @@ auto_subtitle_llama /path/to/video.mp4 --translate_to ko_KR
 
 ---
 
-## 📦 Output & Subtitle Options
+## 📦 Other Options
 
 | Option             | Description |
 |--------------------|-------------|
-| `--output_dir, -o` | Directory where the resulting subtitled videos and `.srt` files will be saved. Defaults to `subtitled/`. |
-| `--srt_only`       | If set to `true`, only the `.srt` subtitle file will be generated without creating a subtitled video. Useful for manual subtitle editing or external video processing pipelines. |
+| `--model`          | Default: `turbo`. Whisper (transcribing) model size. |
+| `--output_dir, -o` | Default: `subtitled/`. Directory where the resulting subtitled videos and `.srt` files will be saved. |
+| `--srt_only`       | Default: `false`. If set to `true`, only the `.srt` subtitle file will be generated without creating a subtitled video. Useful for manual subtitle editing or external video processing pipelines. |
 
 #### Example:
 
 ```bash
+# Choose Whisper model size
+auto_subtitle_llama /path/to/video.mp4 --model medium
+
 # Save output to a custom directory
 auto_subtitle_llama /path/to/video.mp4 --output_dir results/
 
 # Generate only .srt file (no video overlay)
 auto_subtitle_llama /path/to/video.mp4 --srt_only true
+```
+
+Available whisper models:
+```
+tiny, base, small, medium, large, turbo
 ```
 
 ---
