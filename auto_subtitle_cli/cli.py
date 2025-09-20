@@ -291,8 +291,7 @@ def convert_funasr_to_segments(sentence_info):
     return segments
 
 async def main():
-    parser = argparse.ArgumentParser(
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument("video", nargs="+", type=str,
                         help="paths to video files to transcribe")
     parser.add_argument("--asr_backend", type=str, default="funasr", choices=["funasr", "whisper"],
