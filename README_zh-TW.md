@@ -27,7 +27,7 @@
 直接從 GitHub 安裝套件：
 
 ```bash
-pip install git+https://github.com/YJ-20/auto-subtitle-llama
+pip install git+https://github.com/e2720pjk/auto-subtitle-translate
 ```
 
 **FunASR 和 Google Translate 的額外相依套件：**
@@ -56,7 +56,7 @@ choco install ffmpeg
 ### 僅轉錄字幕（不翻譯）
 
 ```bash
-auto_subtitle_llama /path/to/video.mp4
+auto_subtitle_cli /path/to/video.mp4
 ```
 
 ### 轉錄並翻譯字幕
@@ -65,10 +65,10 @@ auto_subtitle_llama /path/to/video.mp4
 
 ```bash
 # 使用 LLaMA2 後端（預設）
-auto_subtitle_llama /path/to/video.mp4 --translate_to ko_KR
+auto_subtitle_cli /path/to/video.mp4 --translate_to ko_KR
 
 # 使用 Google Translate 後端（建議用於繁體中文且準確度更高）
-auto_subtitle_llama /path/to/video.mp4 --translate_to zh_TW \
+auto_subtitle_cli /path/to/video.mp4 --translate_to zh_TW \
   --translator_backend googletrans
 ```
 
@@ -114,25 +114,25 @@ auto_subtitle_llama /path/to/video.mp4 --translate_to zh_TW \
 
 ```bash
 # 使用 FunASR (預設)
-auto_subtitle_llama /path/to/video.mp4
+auto_subtitle_cli /path/to/video.mp4
 
 # 明確指定 FunASR 並使用中文模型
-auto_subtitle_llama /path/to/video.mp4 --asr_backend funasr --funasr_model zh
+auto_subtitle_cli /path/to/video.mp4 --asr_backend funasr --funasr_model zh
 
 # 使用 Whisper 並使用 base 模型
-auto_subtitle_llama /path/to/video.mp4 --asr_backend whisper --whisper_model base
+auto_subtitle_cli /path/to/video.mp4 --asr_backend whisper --whisper_model base
 
 # 使用 Whisper 並使用 medium 模型，同時翻譯成簡體中文
-auto_subtitle_llama /path/to/video.mp4 --asr_backend whisper --whisper_model medium --translate_to zh_CN
+auto_subtitle_cli /path/to/video.mp4 --asr_backend whisper --whisper_model medium --translate_to zh_CN
 
 # 使用 Google Translate 進行翻譯
-auto_subtitle_llama /path/to/video.mp4 --translator_backend googletrans
+auto_subtitle_cli /path/to/video.mp4 --translator_backend googletrans
 
 # 將輸出儲存到自訂目錄
-auto_subtitle_llama /path/to/video.mp4 --output_dir results/
+auto_subtitle_cli /path/to/video.mp4 --output_dir results/
 
 # 只產生 .srt 檔案（不嵌入影片）
-auto_subtitle_llama /path/to/video.mp4 --srt_only true
+auto_subtitle_cli /path/to/video.mp4 --srt_only true
 ```
 
 ---
@@ -153,7 +153,7 @@ Gemini 負責任務的協調與規劃，並將程式碼編寫、修改等具體�
 查看所有可用選項：
 
 ```bash
-auto_subtitle_llama --help
+auto_subtitle_cli --help
 ```
 
 ---

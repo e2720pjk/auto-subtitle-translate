@@ -1,13 +1,12 @@
 from setuptools import setup, find_packages
 
 setup(
-    version="1.0.6",
-    name="auto_subtitle_llama",
+    version="1.0.0",
+    name="auto_subtitle_cli",
     packages=find_packages(),
-    py_modules=["auto_subtitle_llama"],
-    author="Youngjun Kim",
-    author_email="ai.yjun42@gmail.com",
-    url="https://github.com/YJ-20/auto-subtitle-llama",
+    author="e2720pjk",
+    author_email="e2720pjk@gmail.com",
+    url="https://github.com/e2720pjk/auto-subtitle-translate",
     install_requires=[
         'openai-whisper',
         'ffmpeg-python',
@@ -18,7 +17,7 @@ setup(
     description="Automatically generate, translate and embed subtitles into your videos",
     keywords=['subtitles', 'translate', 'video', 'whisper', 'llama2'],
     entry_points={
-        'console_scripts': ['auto_subtitle_llama=auto_subtitle_llama.cli:main'],
+        'console_scripts': ['auto_subtitle_cli=auto_subtitle_cli.cli:main'],
     },
     include_package_data=True,
 )

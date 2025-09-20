@@ -18,7 +18,7 @@ from tqdm import tqdm
 # Uncomment below and comment "from .utils import *", if executing cli.py directly
 import sys
 sys.path.append(".")
-from auto_subtitle_llama.utils import *
+from auto_subtitle_cli.utils import *
 
 # deal with huggingface tokenizer warning
 os.environ["TOKENIZERS_PARALLELISM"] = "false"

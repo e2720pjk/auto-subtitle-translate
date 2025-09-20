@@ -1,7 +1,7 @@
 dist
 .DS_Store
 *.egg-info
-auto_subtitle/__pycache__
+auto_subtitle_cli/__pycache__
 build
 subtitled
 *.mp4

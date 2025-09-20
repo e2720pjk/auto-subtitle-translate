@@ -11,13 +11,13 @@ or [Googletrans](https://github.com/ssut/py-googletrans).
 
 ## 📺 [Demo Video](https://youtu.be/vkvTpmQ7M48?si=qQLvYzwtsQ4djo4K)
 
-![Auto Subtitle Demo Screenshot 1](https://github.com/YJ-20/auto-subtitle-llama/assets/68987494/85a41810-75ac-44f8-9b75-35c599032619)
+![Auto Subtitle Demo Screenshot 1](https://github.com/YJ-20/auto-subtitle-translate/assets/68987494/85a41810-75ac-44f8-9b75-35c599032619)
 
-![Auto Subtitle Demo Screenshot 2](https://github.com/YJ-20/auto-subtitle-llama/assets/68987494/88d42ad7-da9f-4749-9923-4ec9fc9ed040)
+![Auto Subtitle Demo Screenshot 2](https://github.com/YJ-20/auto-subtitle-translate/assets/68987494/88d42ad7-da9f-4749-9923-4ec9fc9ed040)
 
-![Auto Subtitle Demo Screenshot 3](https://github.com/YJ-20/auto-subtitle-llama/assets/68987494/1c255fae-a1c5-4cb1-a60c-87a6aabfcf04)
+![Auto Subtitle Demo Screenshot 3](https://github.com/YJ-20/auto-subtitle-translate/assets/68987494/1c255fae-a1c5-4cb1-a60c-87a6aabfcf04)
 
-![Auto Subtitle Demo Screenshot 4](https://github.com/YJ-20/auto-subtitle-llama/assets/68987494/91ad2860-18a7-460c-91e6-011265308433)
+![Auto Subtitle Demo Screenshot 4](https://github.com/YJ-20/auto-subtitle-translate/assets/68987494/91ad2860-18a7-460c-91e6-011265308433)
 
 ---
 
@@ -28,7 +28,7 @@ Make sure you have Python 3.7 or later.
 Install the package directly from GitHub:
 
 ```bash
-pip install git+https://github.com/YJ-20/auto-subtitle-llama
+pip install git+https://github.com/e2720pjk/auto-subtitle-translate
 ```
 
 **Additional dependencies for FunASR and Google Translate:**
@@ -57,7 +57,7 @@ choco install ffmpeg
 ### Only Transcribe (w/o Translate)
 
 ```bash
-auto_subtitle_llama /path/to/video.mp4
+auto_subtitle_cli /path/to/video.mp4
 ```
 
 ### Transcribe and Translate Subtitles
@@ -66,11 +66,11 @@ To translate subtitles to another language:
 
 ```bash
 # Using LLaMA2 backend (default)
-auto_subtitle_llama /path/to/video.mp4 --translate_to ko_KR
+auto_subtitle_cli /path/to/video.mp4 --translate_to ko_KR
 
 # Using Google Translate backend
 # (recommended for Traditional Chinese and better accuracy)
-auto_subtitle_llama /path/to/video.mp4 --translate_to zh_TW \
+auto_subtitle_cli /path/to/video.mp4 --translate_to zh_TW \
   --translator_backend googletrans
 ```
 
@@ -116,25 +116,25 @@ auto_subtitle_llama /path/to/video.mp4 --translate_to zh_TW \
 
 ```bash
 # Use FunASR (default)
-auto_subtitle_llama /path/to/video.mp4
+auto_subtitle_cli /path/to/video.mp4
 
 # Explicitly use FunASR with Chinese model
-auto_subtitle_llama /path/to/video.mp4 --asr_backend funasr --funasr_model zh
+auto_subtitle_cli /path/to/video.mp4 --asr_backend funasr --funasr_model zh
 
 # Use Whisper with base model
-auto_subtitle_llama /path/to/video.mp4 --asr_backend whisper --whisper_model base
+auto_subtitle_cli /path/to/video.mp4 --asr_backend whisper --whisper_model base
 
 # Use Whisper with medium model and translate to Chinese (Simplified)
-auto_subtitle_llama /path/to/video.mp4 --asr_backend whisper --whisper_model medium --translate_to zh_CN
+auto_subtitle_cli /path/to/video.mp4 --asr_backend whisper --whisper_model medium --translate_to zh_CN
 
 # Use Google Translate for translation
-auto_subtitle_llama /path/to/video.mp4 --translator_backend googletrans
+auto_subtitle_cli /path/to/video.mp4 --translator_backend googletrans
 
 # Save output to a custom directory
-auto_subtitle_llama /path/to/video.mp4 --output_dir results/
+auto_subtitle_cli /path/to/video.mp4 --output_dir results/
 
 # Generate only .srt file (no video overlay)
-auto_subtitle_llama /path/to/video.mp4 --srt_only true
+auto_subtitle_cli /path/to/video.mp4 --srt_only true
 ```
 
 ---
@@ -157,7 +157,7 @@ to understand this efficient development model.
 To view all available options:
 
 ```bash
-auto_subtitle_llama --help
+auto_subtitle_cli --help
 ```
 
 ---
