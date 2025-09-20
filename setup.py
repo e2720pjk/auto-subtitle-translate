@@ -17,7 +17,7 @@ setup(
     description="Automatically generate, translate and embed subtitles into your videos",
     keywords=['subtitles', 'translate', 'video', 'whisper', 'llama2'],
     entry_points={
-        'console_scripts': ['auto_subtitle_cli=auto_subtitle_cli.cli:main'],
+        'console_scripts': ['auto_subtitle_cli=auto_subtitle_cli.cli:cli_main'],
     },
     include_package_data=True,
 )

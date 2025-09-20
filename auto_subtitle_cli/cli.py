@@ -635,5 +635,9 @@ async def translates_googletrans(translate_to: str, text_batch: List[str], max_b
     return final_translations
 
 
-if __name__ == '__main__':
+def cli_main():
+    """Entry point for the console script."""
     asyncio.run(main())
+
+if __name__ == '__main__':
+    cli_main()
