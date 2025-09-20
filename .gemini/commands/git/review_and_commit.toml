@@ -1,0 +1,52 @@
+description = "自動審查 Git 變更，提供提交建議評分與報告，並建議暫存命令。"
+prompt = """
+請審查以下 Git 變更內容，並根據這些變更擬定一個繁體中文的 Git commit message。
+同時，請生成一份繁體中文的 Markdown 格式記錄報告。
+
+報告內容應詳細說明本次提交的變更，並包含以下部分：
+-   本次提交的主要目的。
+-   詳細列出所有變更檔案的具體變更內容（例如：新增了哪些檔案、修改了哪些功能、修正了哪些錯誤等）。
+-   **針對每個變更或新增的檔案，請提供一個提交建議評分 (0-100 分，100 分為強烈建議提交)，並說明建議提交或不提交的原因。**
+-   任何需要特別說明的注意事項。
+
+--- Git Status (顯示所有變更與新增檔案的狀態) ---
+!{git status --porcelain}
+
+--- Git Diff (顯示已修改檔案的內容差異) ---
+!{git diff HEAD}
+
+--- New (Untracked) Files (顯示新檔案列表) ---
+!{git ls-files --others --exclude-standard}
+
+--- New (Untracked) Files Context (讀取新檔案內容) ---
+請依賴`read_many_files`工具讀取新檔案列表的檔案內容
+
+--- 最近的提交記錄 (供參考提交風格) ---
+!{git log -n 3}
+
+請提供以下三部分內容：
+
+1.  **Git Commit Message (繁體中文)**:
+    請提供一個簡潔明瞭的 commit message，遵循 Conventional Commits 格式（例如：feat: 新增功能, fix: 修正錯誤, docs: 更新文件等）。
+
+2.  **變更記錄報告 (繁體中文 Markdown 格式)**:
+    請使用 `write_file` 工具創建一個名為 `commit_report_$(date +%Y%m%d%H%M%S).md` 的 Markdown 檔案。
+    報告內容應符合上述所有要求。
+
+    **評分與原因的輸出格式範例 (YAML):**
+    ```yaml
+    - file_path: path/to/your/file.js
+      recommendation: Commit
+      score: 98
+      reason: 此檔案包含了新功能的核心邏輯，且已通過相關測試。
+    - file_path: path/to/another/file.txt
+      recommendation: Do Not Commit
+      score: 2
+      reason: 這是臨時的測試檔案，不應提交到版本控制中。
+    ```
+
+3.  **建議的 Git Add 命令**:
+    根據您的審查和評分，執行建議 `git add` 的檔案命令。
+
+最後，請將 Git Commit Message 的內容儲存到 `commit_message.txt` 檔案中，等待使用者自行使用。
+"""

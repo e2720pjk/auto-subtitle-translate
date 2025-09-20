@@ -1,5 +1,13 @@
 openai-whisper
+funasr
+librosa
 ffmpeg-python
 transformers
 sentencepiece
 protobuf
+torch
+torchaudio
+numpy
+scipy
+soundfile
+googletrans
