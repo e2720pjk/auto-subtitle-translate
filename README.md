@@ -147,7 +147,7 @@ planning, while delegating specific development tasks such as code writing and
 modification to Claude Code.
 
 You can refer to the
-[Gemini-Claude Integration Template Project](link/to/your/gemini_claude_template_repo)
+[Gemini Code Delegation Workflow with Claude](https://github.com/e2720pjk/gemini-claude-workflow.git)
 to understand this efficient development model.
 
 ---

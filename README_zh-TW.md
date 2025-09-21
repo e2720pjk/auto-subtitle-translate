@@ -143,7 +143,7 @@ auto_subtitle_cli /path/to/video.mp4 --srt_only true
 Gemini 負責任務的協調與規劃，並將程式碼編寫、修改等具體開發任務委派給 Claude Code 執行。
 
 您可以參考
-[Gemini-Claude 整合模板專案](link/to/your/gemini_claude_template_repo)
+[Gemini Code Delegation Workflow with Claude](https://github.com/e2720pjk/gemini-claude-workflow.git)
 來了解這種高效的開發模式。
 
 ---
